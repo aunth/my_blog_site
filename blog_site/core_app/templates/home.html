@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}My Blog - Home{% endblock %}
+{% block head %} <link rel="stylesheet" href="{% static 'home.css' %}"> {% endblock %}
+{% block content %}
+<!-- home.html -->
+<form method="get" action="{% url 'home' %}" class="sort-form">
+    <label>
+        Sort by:
+        {% for option in sort_options %}
+            <input type="radio" name="sort_by" value="{{ option }}"
+                   {% if option == selected_sort %} checked{% endif %}>
+            {{ option|title }}
+        {% endfor %}
+    </label>
+    
+    <label>
+        Filter by Theme:
+        <select name="theme">
+            <option value="" {% if not selected_theme %}selected{% endif %}>All Themes</option>
+            {% for theme in themes %}
+                <option value="{{ theme }}" {% if theme == selected_theme %}selected{% endif %}>{{ theme }}</option>
+            {% endfor %}
+        </select>
+    </label>
+
+    <button type="submit">Apply</button>
+</form>
+
+<section class="blog-posts">
+    {% if selected_theme %}
+        <p>Filtering by Theme: {{ selected_theme }}</p>
+    {% endif %}
+    {% if not posts %}
+        <h1>No posts have been added</h1>
+    {% else %}
+        {% for post in posts %}
+            <article class="blog-post">
+                <h2>{{ post.title }}</h2>
+                <p class="post-meta">{{ post.theme }}</p>
+                <p class="post-content">{{ post.content }}</p>
+                <p class="post-author">{{ post.author }}</p>
+                <a href="{% url 'post_detail' post.id %}" class="read-more">Read More</a>
+                {% with post.likes as likes_count %}
+                        <span>&#x1F497;</span>
+                        <span>{{ likes_count }}</span> 
+                {% endwith %}
+            </article>
+        {% endfor %}
+    {% endif %}
+</section>
+
+{% endblock %}

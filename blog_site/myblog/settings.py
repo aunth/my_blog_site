@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,7 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'blog',
+	'core_app',
+	'post_app',
+	'user_app'
 ]
 
 MIDDLEWARE = [
@@ -70,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = [BASE_DIR / 'blog/static']
+STATICFILES_DIRS = [BASE_DIR / 'core_app/static']
 
 WSGI_APPLICATION = 'myblog.wsgi.application'
 

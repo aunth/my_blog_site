@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+    <!-- Include profile.css only for this template -->
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h1>User Profile</h1>
+    <p>Welcome, {{ username }}!</p>
+    <p>Your email address: {{ email }} |</p>
+
+    <a href="{% url 'logout' %}">Logout</a>
+{% endblock %}
+

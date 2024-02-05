@@ -1,0 +1,46 @@
+<!-- base.html -->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li class="profile-button">
+                    <a href="{% url 'profile' %}">
+                        <span class="profile-icon">
+                            <div class="profile-link"></div>
+                            {% if user.is_authenticated %}
+                                {{ user.username.0|upper }}
+                            {% else %}
+                                <!-- Default icon or letter for non-authenticated users -->
+                                A
+                            {% endif %}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="content">
+        {% block content %}{% endblock %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </footer>
+</body>
+</html>

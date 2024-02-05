@@ -1,0 +1,18 @@
+<!-- about.html -->
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'about.css' %}">
+    
+    <section class="project-description">
+        <h1>About My Project</h1>
+        <p>
+            Welcome to my project! This project is a personal blog site developed with Django, showcasing my skills in web development.
+            It includes features such as a homepage displaying blog posts, a registration system, and more.
+        </p>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- contact.html -->
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact Me{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'contact.css' %}">
+    <section class="contact-info">
+        <h1>Contact Me</h1>
+        <p>
+            You can reach out to me through various channels:
+        </p>
+        <ul>
+            <li>
+                LinkedIn: <a href="https://www.linkedin.com/in/vlad-maslianko-b4a885290/" target="_blank" rel="noopener noreferrer">Vlad Maslianko</a>
+            </li>
+            <li>
+                GitHub: <a href="https://github.com/aunth" target="_blank" rel="noopener noreferrer">aunth</a>
+            </li>
+            <li>
+                Telegram: <a href="https://t.me/vmaslian" target="_blank" rel="noopener noreferrer">@vmaslian</a>
+            </li>
+            <li>
+                Email: <a href="mailto:masliankovlad@gmail.com">masliankovlad@gmail.com</a>
+            </li>
+        </ul>
+    </section>
+{% endblock %}

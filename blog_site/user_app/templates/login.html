@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in</title> 
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h2>Log in</h2>
+    <form method="post" action="{% url 'register' %}">
+        {% csrf_token %} 
+      <!-- Display error messages -->
+      <div class="error-message">
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="error">{{ error }}</div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+      </div>
+      <div class="input-box">
+        <label for="id_email">Email:</label>
+        <input type="text" id="id_email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="input-box">
+        <label for="id_password">Password:</label>
+        <input type="password" id="id_password" name="password1" placeholder="Create password" required>
+      </div>    
+      <div class="input-box button">
+        <input type="submit" value="Register Now">
+      </div>
+      <div class="text">
+        <h3>Don't have an account? <a href="#">Registration now</a></h3>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

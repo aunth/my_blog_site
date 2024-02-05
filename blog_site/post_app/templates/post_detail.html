@@ -1,0 +1,29 @@
+<!-- post_detail.html -->
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}{{ post.title }} - My Blog{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'post_detail.css' %}">
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.content }}</p>
+
+    {% if not liked_before %}
+        <!-- Like button form -->
+        <form method="post" action="{% url 'post_detail' pk=post.pk %}">
+            {% csrf_token %}
+            <button type="submit" name="like_button">
+                <span>&#x2665;</span> Like
+            </button>
+        </form>
+    {% else %}
+        <p>You have already liked this post!</p>
+    {% endif %}
+
+    <p>Likes: {{ post.likes }}</p>
+
+    <a href="{% url 'home' %}">Back to Post List</a>
+{% endblock %}
