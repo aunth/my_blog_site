@@ -16,4 +16,4 @@ python manage.py runserver
 ```
 
 ## Contributing
-If, for some reason, you decide to help me make this site better, then just create a new branch and make a pool request
+If, for some reason, you decide to help me make this site better, then just create a new branch and make a pull request
